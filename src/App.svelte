@@ -289,7 +289,7 @@
         <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[3]} bind:this={input3Movie} disabled={guessUsedMovie[3]}>
         <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[4]} bind:this={input4Movie} disabled={guessUsedMovie[4]}>
       </div>
-      <button on:click={clearStuff}>Clear</button>
+<!--       <button on:click={clearStuff}>Clear</button> -->
     </div>
   {/if}
   {#if isSong}
@@ -333,7 +333,7 @@
         <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[3]} bind:this={input3Song} disabled={guessUsedSong[3]}>
         <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[4]} bind:this={input4Song} disabled={guessUsedSong[4]}>
       </div>
-      <button on:click={clearStuff}>Clear</button>
+<!--       <button on:click={clearStuff}>Clear</button> -->
     </div>
   {/if}
 </main>
