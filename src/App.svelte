@@ -29,11 +29,6 @@
 
   // console.log(storage.getItem("lastAccess"));
   // console.log(endDate);
-  // let firstAccess = storage.getItem("firstAccess") || "yes";
-  // if (firstAccess === "yes") {
-  //   showInfo();
-  //   storage.setItem("firstAccess", "no");
-  // }
   
   let daysPlayedMovie = storage.getItem("daysPlayedMovie") || "1";
   daysPlayedMovie = parseInt(daysPlayedMovie);
@@ -172,6 +167,12 @@
     gameResult = "";
     statsWindowShow = true;
     infoWindowShow = false;
+  }
+
+  let firstAccess = storage.getItem("firstAccess") || "yes";
+  if (firstAccess === "yes") {
+    showInfo();
+    storage.setItem("firstAccess", "no");
   }
 
   function closeStats() {
