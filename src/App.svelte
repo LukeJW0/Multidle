@@ -455,7 +455,7 @@
 
   .inputbox:disabled {
     background-color: #1a1c1f;
-    color: gray;
+    color: #919191;
   }
 
   .window {
