@@ -455,7 +455,7 @@
 
   .inputbox:disabled {
     background-color: #1a1c1f;
-    color: #919191;
+    color: gray;
   }
 
   .window {
@@ -602,6 +602,10 @@
 
     h1 {
       font-size: 3rem;
+    }
+
+    .inputbox:disabled {
+      color: white;
     }
   }
 </style>
