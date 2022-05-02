@@ -263,7 +263,7 @@
       {#if infoWindowShow}
         <div class=window>
           <h1>INFO</h1>
-          <h1 class=infotext>When making a guess for movies/songs, do not include punctuation such as apostrophes and periods. Google is allowed if you need the exact name of a movie/song, such as if it starts with "the" or not</h1>
+          <h1 class=infotext>When making a guess for movies/songs, do not include punctuation such as apostrophes and periods. Google is allowed if you need the exact name of a movie/song, such as if it starts with "the" or not. Switch between gamemodes at the top left!</h1>
           <button class=closestats on:click={closeInfo}>close</button>
         </div>
       {/if}
@@ -307,7 +307,7 @@
       {#if infoWindowShow}
         <div class=window>
           <h1>INFO</h1>
-          <h1 class=infotext>Multidle is a wordle-like game that offers multiple types. To see stats for each game, open the stats window while in that game.</h1>
+          <h1 class=infotext>When making a guess for movies/songs, do not include punctuation such as apostrophes and periods. Google is allowed if you need the exact name of a movie/song, such as if it starts with "the" or not. Switch between gamemodes at the top left!</h1>
           <button class=closestats on:click={closeInfo}>close</button>
         </div>
       {/if}
