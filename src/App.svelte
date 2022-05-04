@@ -6,7 +6,7 @@
   let isMovie = true;
   let isSong = false;
 
-  const startDate = new Date(2022, 4, 2).toLocaleString();
+  const startDate = new Date(2022, 4, 1).toLocaleString();
   const endDate = new Date().toLocaleString();
 
   const diffInMs = new Date(endDate) - new Date(startDate);
