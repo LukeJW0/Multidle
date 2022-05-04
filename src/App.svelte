@@ -313,6 +313,9 @@
     ],
     [
       "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_12/3460062/210326-lil-nas-x-mb-2004.jpg", yearImage, "https://www.rollingstone.com/wp-content/uploads/2022/04/lil-nas-x-2022.jpg", billboardImage, quoteImage
+    ],
+    [
+      "https://media.npr.org/assets/img/2015/02/13/estelle-credit---sophy-holland-_wide-60283aa336f6dd95aaff8d5803fc0cbbb75a8f63.jpg?s=1400", yearImage, "https://www.slantmagazine.com/wp-content/uploads/2018/09/shine-1000x600.jpg", billboardImage, quoteImage
     ]
   ];
   const hintsSong = [
@@ -324,9 +327,12 @@
     ],
     [
       "This song is by Lil Nas X", "This song came out in 2019", "This song was released as a single", "This song reached No. 1 on the Billboard Hot 100", "This song has the lyric \"I got the horses in the back\""
+    ],
+    [
+      "This song is by Estelle", "This song came out in 2008", "This song is in the album \"Shine\"", "This song reached No. 9 on the Billboard Hot 100", "This song has the lyric \"Just touched down in London town\""
     ]
   ];
-  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD"]; // change info to say no punctuation and make text smaller
+  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY"];
   
 </script>
 
