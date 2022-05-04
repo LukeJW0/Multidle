@@ -1,11 +1,12 @@
 <script>
+  import { tick } from "svelte";
   let storage = window.localStorage;
   // storage.clear();
   
   let isMovie = true;
   let isSong = false;
 
-  const startDate = new Date(2022, 4, 1).toLocaleString();
+  const startDate = new Date(2022, 4, 2).toLocaleString();
   const endDate = new Date().toLocaleString();
 
   const diffInMs = new Date(endDate) - new Date(startDate);
@@ -72,6 +73,17 @@
     console.log('test');
   }
 
+  let guessFocusedMovie = [false, false, false, false, false];
+  let guessFocusedSong = [false, false, false, false, false];
+
+  function guessFocusMovie() {
+    guessFocusedMovie[hintIndexMovie] = !guessFocusedMovie[hintIndexMovie];
+  }
+
+  function guessFocusSong() {
+    guessFocusedSong[hintIndexSong] = !guessFocusedSong[hintIndexSong];
+  }
+
   let input0Movie;
   let input1Movie;
   let input2Movie;
@@ -87,10 +99,6 @@
   let inputsSong = [input0Song, input1Song, input2Song, input3Song, input4Song];
 
   function enterGuessMovie() {
-    if (event.key !== 'Enter') return;
-
-    const current = document.activeElement;
-    
     guessUsedMovie[hintIndexMovie + 1] = false;
     guessUsedMovie[hintIndexMovie] = true;
     storage.setItem("guessUsedMovie", JSON.stringify(guessUsedMovie));
@@ -106,14 +114,9 @@
         storage.setItem("hintIndexMovie", JSON.stringify(hintIndexMovie));
       }
     }
-    current.blur();
   }
 
   function enterGuessSong() {
-    if (event.key !== 'Enter') return;
-
-    const current = document.activeElement;
-
     guessUsedSong[hintIndexSong + 1] = false;
     guessUsedSong[hintIndexSong] = true;
     storage.setItem("guessUsedSong", JSON.stringify(guessUsedSong));
@@ -127,10 +130,8 @@
       } else {
         hintIndexSong++;
         storage.setItem("hintIndexSong", JSON.stringify(hintIndexSong));
-        // inputsMovie[hintIndexMovie].focus();
       }
     }
-    current.blur();
   }
 
   let gameResult;
@@ -205,6 +206,70 @@
     }
   }
 
+  import { movieList, songList } from './lists.js';
+  let searchResults = [];
+  async function filterSearchMovie() {
+    await tick();
+    let inputValue = inputVarMovie[hintIndexMovie];
+    searchResults = [];
+    if (inputValue.length == 0) {
+      return;
+    }
+    let i = 0;
+    while (searchResults.length < 5 && i < movieList.length) {
+      if (movieList[i].toUpperCase().indexOf(inputValue.toUpperCase()) > -1) {
+        searchResults.push(movieList[i]);
+        searchResults = searchResults;
+      }
+      i++;
+    }
+  }
+
+  async function filterSearchSong() {
+    await tick();
+    let inputValue = inputVarSong[hintIndexSong];
+    searchResults = [];
+    if (inputValue.length == 0) {
+      return;
+    }
+    let i = 0;
+    while (searchResults.length < 5 && i < songList.length) {
+      if (songList[i].toUpperCase().indexOf(inputValue.toUpperCase()) > -1) {
+        searchResults.push(songList[i]);
+        searchResults = searchResults;
+      }
+      i++;
+    }
+  }
+
+  function chooseResultMovie(i) {
+    inputVarMovie[hintIndexMovie] = searchResults[i].toUpperCase();
+  }
+
+  function chooseResultSong(i) {
+    inputVarSong[hintIndexSong] = searchResults[i].toUpperCase();
+  }
+
+  function enterGuessMovieKey() {
+    if (event.key !== 'Enter') return;
+
+    const current = document.activeElement;
+    guessFocusMovie();
+    enterGuessMovie();
+    current.blur();
+    guessFocusMovie();
+  }
+
+  function enterGuessSongKey() {
+    if (event.key !== 'Enter') return;
+
+    const current = document.activeElement;
+    guessFocusSong();
+    enterGuessSong();
+    current.blur();
+    guessFocusSong();
+  }
+
   const yearImage = "https://wallpaperaccess.com/full/1536530.jpg";
   const quoteImage = "https://www.quickanddirtytips.com/sites/default/files/images/5505/quote.png";
   const billboardImage = "https://celebrityaccess.com/wp-content/uploads/2020/07/Billboard_Hot_100_logo.jpg";
@@ -215,6 +280,9 @@
     ],
     [
       "https://media.vanityfair.com/photos/5dc975df461e3100094a7908/16:9/w_1616,h_909,c_limit/GettyImages-1185569988.jpg", yearImage, quoteImage, "https://variety.com/wp-content/uploads/2020/12/christopher-Nolan-2.jpg?w=1000", "https://www.denofgeek.com/wp-content/uploads/2018/07/the_dark_knight_10_year_anniversary_best_superhero_movie.jpg?fit=1000%2C557"
+    ],
+    [
+      "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J3XMVQRTMNG2RIIKG2DQWR2XTY.jpg", yearImage, quoteImage, "https://bloximages.chicago2.vip.townnews.com/insidenova.com/content/tncms/assets/v3/editorial/e/0e/e0ecb69e-8d62-5574-8257-0a71cac0963c/623c681465ad6.image.jpg", "https://m.media-amazon.com/images/M/MV5BMTg3OTg3MDkwOF5BMl5BanBnXkFtZTcwNDkwNDAzMw@@._V1_.jpg"
     ]
   ];
   const hintsMovie = [
@@ -223,9 +291,12 @@
     ],
     [
       "This movie stars Christian Bale", "This movie came out in 2008", "This movie has the line: \"Ya wanna know how I got these scars?\"", "This movie was directed by Christopher Nolan", "This scene is in the movie"
+    ],
+    [
+      "This movie stars Ben Stiller", "This movie came out in 2004", "This movie has the line: \"It's a bold strategy, Cotton. Let's see if it pays off for em'.\"", "This movie was directed by Rawson Marshall Thurber", "This scene is in the movie"
     ]
   ];
-  const answersMovie = ["INCEPTION", "THE DARK KNIGHT"];
+  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "DODGEBALL: A TRUE UNDERDOG STORY"];
 
   const imagesSong = [
     [
@@ -233,6 +304,9 @@
     ],
     [
       "https://www.rollingstone.com/wp-content/uploads/2021/05/J.-Cole_Lead-Promo-Image.jpg", yearImage, "https://wiux.org/wp-content/uploads/2014/12/j-cole-2014-forest-hills-drive-album-stream-1-2.jpg", billboardImage, quoteImage
+    ],
+    [
+      "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_12/3460062/210326-lil-nas-x-mb-2004.jpg", yearImage, "https://www.rollingstone.com/wp-content/uploads/2022/04/lil-nas-x-2022.jpg", billboardImage, quoteImage
     ]
   ];
   const hintsSong = [
@@ -241,9 +315,12 @@
     ],
     [
       "This song is by J. Cole", "This song came out in 2014", "This song is in the album \"2014 Forest Hills Drive\"", "This song reached No. 36 on the Billboard Hot 100", "This song has the lyric \"Don't save her, she don't wanna be saved\""
+    ],
+    [
+      "This song is by Lil Nas X", "This song came out in 2019", "This song was released as a single", "This song reached No. 1 on the Billboard Hot 100", "This song has the lyric \"I got the horses in the back\""
     ]
   ];
-  const answersSong = ["GODS PLAN", "NO ROLE MODELZ"]; // change info to say no punctuation and make text smaller
+  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD"]; // change info to say no punctuation and make text smaller
   
 </script>
 
@@ -263,7 +340,7 @@
       {#if infoWindowShow}
         <div class=window>
           <h1>INFO</h1>
-          <h1 class=infotext>When making a guess for movies/songs, do not include punctuation such as apostrophes and periods. Google is allowed if you need the exact name of a movie/song, such as if it starts with "the" or not. Switch between gamemodes at the top left!</h1>
+          <h1 class=infotext>Options do not show up if you misspelled your guess. Try changing your spelling to see if it pops up. Switch between gamemodes at the top left!</h1>
           <button class=closestats on:click={closeInfo}>close</button>
         </div>
       {/if}
@@ -283,12 +360,38 @@
       <img class=image alt="" src={imagesMovie[diffInDays][hintIndexMovie]} />
       <h1 class=hint>{hintsMovie[diffInDays][hintIndexMovie]}</h1>
       <div class=guessgroup>
-        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[0]} bind:this={input0Movie} disabled={guessUsedMovie[0]}>
-        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[1]} bind:this={input1Movie} disabled={guessUsedMovie[1]}>
-        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[2]} bind:this={input2Movie} disabled={guessUsedMovie[2]}>
-        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[3]} bind:this={input3Movie} disabled={guessUsedMovie[3]}>
-        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovie} bind:value={inputVarMovie[4]} bind:this={input4Movie} disabled={guessUsedMovie[4]}>
+        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovieKey} bind:value={inputVarMovie[0]} on:input={filterSearchMovie} on:focus={guessFocusMovie} on:blur={guessFocusMovie} disabled={guessUsedMovie[0]}>
+        {#if guessFocusedMovie[0]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultMovie(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovieKey} bind:value={inputVarMovie[1]} on:input={filterSearchMovie} on:focus={guessFocusMovie} on:blur={guessFocusMovie} disabled={guessUsedMovie[1]}>
+        {#if guessFocusedMovie[1]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultMovie(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovieKey} bind:value={inputVarMovie[2]} on:input={filterSearchMovie} on:focus={guessFocusMovie} on:blur={guessFocusMovie} disabled={guessUsedMovie[2]}>
+        {#if guessFocusedMovie[2]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mouseover={() => chooseResultMovie(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovieKey} bind:value={inputVarMovie[3]} on:input={filterSearchMovie} on:focus={guessFocusMovie} on:blur={guessFocusMovie} disabled={guessUsedMovie[3]}>
+        {#if guessFocusedMovie[3]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mouseover={() => chooseResultMovie(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox inputmovie" type="text" on:keydown={enterGuessMovieKey} bind:value={inputVarMovie[4]} on:input={filterSearchMovie} on:focus={guessFocusMovie} on:blur={guessFocusMovie} disabled={guessUsedMovie[4]}>
+        {#if guessFocusedMovie[4]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mouseover={() => chooseResultMovie(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
       </div>
+      <button class=enterbutton on:click={enterGuessMovie}>Enter</button>
 <!--       <button on:click={clearStuff}>Clear</button> -->
     </div>
   {/if}
@@ -307,7 +410,7 @@
       {#if infoWindowShow}
         <div class=window>
           <h1>INFO</h1>
-          <h1 class=infotext>When making a guess for movies/songs, do not include punctuation such as apostrophes and periods. Google is allowed if you need the exact name of a movie/song, such as if it starts with "the" or not. Switch between gamemodes at the top left!</h1>
+          <h1 class=infotext>Options do not show up if you misspelled your guess. Try changing your spelling to see if it pops up. Switch between gamemodes at the top left!</h1>
           <button class=closestats on:click={closeInfo}>close</button>
         </div>
       {/if}
@@ -327,12 +430,38 @@
       <img class=image alt="" src={imagesSong[diffInDays][hintIndexSong]} />
       <h1 class=hint>{hintsSong[diffInDays][hintIndexSong]}</h1>
       <div class=guessgroup>
-        <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[0]} bind:this={input0Song} disabled={guessUsedSong[0]}>
-        <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[1]} bind:this={input1Song} disabled={guessUsedSong[1]}>
-        <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[2]} bind:this={input2Song} disabled={guessUsedSong[2]}>
-        <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[3]} bind:this={input3Song} disabled={guessUsedSong[3]}>
-        <input class="inputbox" type="text" on:keydown={enterGuessSong} bind:value={inputVarSong[4]} bind:this={input4Song} disabled={guessUsedSong[4]}>
+        <input class="inputbox" type="text" on:keydown={enterGuessSongKey} bind:value={inputVarSong[0]} on:input={filterSearchSong} on:focus={guessFocusSong} on:blur={guessFocusSong} disabled={guessUsedSong[0]}>
+        {#if guessFocusedSong[0]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultSong(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox" type="text" on:keydown={enterGuessSongKey} bind:value={inputVarSong[1]} on:input={filterSearchSong} on:focus={guessFocusSong} on:blur={guessFocusSong} disabled={guessUsedSong[1]}>
+        {#if guessFocusedSong[1]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultSong(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox" type="text" on:keydown={enterGuessSongKey} bind:value={inputVarSong[2]} on:input={filterSearchSong} on:focus={guessFocusSong} on:blur={guessFocusSong} disabled={guessUsedSong[2]}>
+        {#if guessFocusedSong[2]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultSong(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox" type="text" on:keydown={enterGuessSongKey} bind:value={inputVarSong[3]} on:input={filterSearchSong} on:focus={guessFocusSong} on:blur={guessFocusSong} disabled={guessUsedSong[3]}>
+        {#if guessFocusedSong[3]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultSong(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
+        <input class="inputbox" type="text" on:keydown={enterGuessSongKey} bind:value={inputVarSong[4]} on:input={filterSearchSong} on:focus={guessFocusSong} on:blur={guessFocusSong} disabled={guessUsedSong[4]}>
+        {#if guessFocusedSong[4]}
+          {#each searchResults as result, i}
+            <button class=searchresult on:mousedown={() => chooseResultSong(i)}>{searchResults[i]}</button>
+          {/each}
+        {/if}
       </div>
+      <button class=enterbutton on:click={enterGuessSong}>Enter</button>
 <!--       <button on:click={clearStuff}>Clear</button> -->
     </div>
   {/if}
@@ -458,6 +587,16 @@
     color: gray;
   }
 
+  .searchresult {
+    width: 40%;
+    margin: -0.5% auto 0 auto;
+    font-size: 2rem;
+    font-weight: 200;
+    border: 0.1rem solid #7d7d7d;
+    border-radius: 0;
+    height: fit-content;
+  }
+
   .window {
     position: absolute;
     width: 50%;
@@ -525,6 +664,11 @@
     color: black;
   }
 
+  .enterbutton {
+    border-radius: 0;
+    padding: 0.5%;
+  }
+
   p {
     max-width: 14rem;
     margin: 1rem auto;
@@ -583,6 +727,15 @@
 
     .inputbox {
       width: 80%;
+    }
+
+    .searchresult {
+      width: 80%;
+      font-size: 1.5rem;
+    }
+
+    .enterbutton {
+      padding: 2%;
     }
 
     .window {
