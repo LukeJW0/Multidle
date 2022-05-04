@@ -282,6 +282,9 @@
       "https://media.vanityfair.com/photos/5dc975df461e3100094a7908/16:9/w_1616,h_909,c_limit/GettyImages-1185569988.jpg", yearImage, quoteImage, "https://variety.com/wp-content/uploads/2020/12/christopher-Nolan-2.jpg?w=1000", "https://www.denofgeek.com/wp-content/uploads/2018/07/the_dark_knight_10_year_anniversary_best_superhero_movie.jpg?fit=1000%2C557"
     ],
     [
+      "https://deadline.com/wp-content/uploads/2021/04/Michael-Cera-2.jpg?crop=40px%2C25px%2C912px%2C511px&resize=681%2C383", yearImage, quoteImage, "https://s3.amazonaws.com/criterion-production/explore_images/975-33e7b41816db5a9ad02c885ec7126bff/92ETTpLpaD86o0c7R9rNrhSqD863YH_original.jpg", "https://content.api.news/v3/images/bin/61d7f6e49dac3f2c42c4729ff970fe53"
+    ],
+    [
       "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J3XMVQRTMNG2RIIKG2DQWR2XTY.jpg", yearImage, quoteImage, "https://bloximages.chicago2.vip.townnews.com/insidenova.com/content/tncms/assets/v3/editorial/e/0e/e0ecb69e-8d62-5574-8257-0a71cac0963c/623c681465ad6.image.jpg", "https://m.media-amazon.com/images/M/MV5BMTg3OTg3MDkwOF5BMl5BanBnXkFtZTcwNDkwNDAzMw@@._V1_.jpg"
     ]
   ];
@@ -293,10 +296,13 @@
       "This movie stars Christian Bale", "This movie came out in 2008", "This movie has the line: \"Ya wanna know how I got these scars?\"", "This movie was directed by Christopher Nolan", "This scene is in the movie"
     ],
     [
+      "This movie stars Michael Cera", "This movie came out in 2007", "This movie has the line: \"\"Muhammad\" is the most commonly used name on Earth.\"", "This movie was directed by Greg Mottola", "This scene is in the movie"
+    ],
+    [
       "This movie stars Ben Stiller", "This movie came out in 2004", "This movie has the line: \"It's a bold strategy, Cotton. Let's see if it pays off for em'.\"", "This movie was directed by Rawson Marshall Thurber", "This scene is in the movie"
     ]
   ];
-  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "DODGEBALL: A TRUE UNDERDOG STORY"];
+  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY"];
 
   const imagesSong = [
     [
