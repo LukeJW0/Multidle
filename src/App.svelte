@@ -286,6 +286,9 @@
     ],
     [
       "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J3XMVQRTMNG2RIIKG2DQWR2XTY.jpg", yearImage, quoteImage, "https://bloximages.chicago2.vip.townnews.com/insidenova.com/content/tncms/assets/v3/editorial/e/0e/e0ecb69e-8d62-5574-8257-0a71cac0963c/623c681465ad6.image.jpg", "https://m.media-amazon.com/images/M/MV5BMTg3OTg3MDkwOF5BMl5BanBnXkFtZTcwNDkwNDAzMw@@._V1_.jpg"
+    ],
+    [
+      "https://i0.wp.com/www.usmagazine.com/wp-content/uploads/2018/01/116937344_heath-ledger-zoom.jpg?crop=0px%2C41px%2C2000px%2C1131px&resize=1600%2C900&ssl=1&quality=86&strip=all", yearImage, quoteImage, "https://alchetron.com/cdn/gil-junger-40e802c3-0d39-49c9-bdf1-f9e858e8e9f-resize-750.jpeg", "https://static01.nyt.com/images/2019/03/31/arts/31tenthings-history1/merlin_152396589_c07cbedc-4de1-48b2-88aa-93bfab25a539-superJumbo.jpg"
     ]
   ];
   const hintsMovie = [
@@ -300,9 +303,12 @@
     ],
     [
       "This movie stars Ben Stiller", "This movie came out in 2004", "This movie has the line: \"It's a bold strategy, Cotton. Let's see if it pays off for em'.\"", "This movie was directed by Rawson Marshall Thurber", "This scene is in the movie"
+    ],
+    [
+      "This movie stars Heath Ledger", "This movie came out in 1999", "This movie has the line: \"I know you can be overwhelmed, and you can be underwhelmed, but can you ever just be whelmed?\"", "This movie was directed by Gil Junger", "This scene is in the movie"
     ]
   ];
-  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY"];
+  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY", "10 THINGS I HATE ABOUT YOU"];
 
   const imagesSong = [
     [
@@ -316,6 +322,9 @@
     ],
     [
       "https://media.npr.org/assets/img/2015/02/13/estelle-credit---sophy-holland-_wide-60283aa336f6dd95aaff8d5803fc0cbbb75a8f63.jpg?s=1400", yearImage, "https://www.slantmagazine.com/wp-content/uploads/2018/09/shine-1000x600.jpg", billboardImage, quoteImage
+    ],
+    [
+      "https://media.npr.org/assets/img/2020/11/13/outkastb-wflag_wide-265a1c04bb72a827735695a8503f585f246ffe14.jpg", yearImage, "https://images.squarespace-cdn.com/content/v1/56858337cbced60d3b293aef/1604007072483-1YVNX2K2E3YEN3RHUYKA/Albumism_OutKast_Stankonia_MainImage_16x9.jpg", billboardImage, quoteImage
     ]
   ];
   const hintsSong = [
@@ -330,9 +339,12 @@
     ],
     [
       "This song is by Estelle", "This song came out in 2008", "This song is in the album \"Shine\"", "This song reached No. 9 on the Billboard Hot 100", "This song has the lyric \"Just touched down in London town\""
+    ],
+    [
+      "This song is by OutKast", "This song came out in 2000", "This song is in the album \"Stankonia\"", "This song reached No. 1 on the Billboard Hot 100", "This song has the lyric \"Never meant to make your daughter cry\""
     ]
   ];
-  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY"];
+  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY", "MS JACKSON"];
   
 </script>
 
@@ -579,6 +591,8 @@
 
   .hint {
     font-size: 3rem;
+    max-width: 90%;
+    margin: 0 auto;
   }
 
   .inputbox {
