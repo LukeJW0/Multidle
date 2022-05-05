@@ -43,6 +43,8 @@
     storage.removeItem("guessUsedSong");
     storage.removeItem("inputVarSong");
     storage.removeItem("hintIndexSong");
+    storage.removeItem("correctTodayMovie");
+    storage.removeItem("correctTodaySong");
     storage.setItem("hasPlayedSong", 'false');
     daysPlayedMovie++;
     storage.setItem("daysPlayedMovie", daysPlayedMovie);
@@ -56,6 +58,7 @@
   hintIndexMovie = parseInt(hintIndexMovie);
   let totalCorrectMovie = storage.getItem("totalCorrectMovie") || "0";
   totalCorrectMovie = parseInt(totalCorrectMovie);
+  let correctTodayMovie = storage.getItem("correctTodayMovie") || "false";
 
   let guessUsedSong = (storage.getItem("guessUsedSong") || "[false, true, true, true, true]");
   guessUsedSong = JSON.parse(guessUsedSong);
@@ -65,6 +68,7 @@
   hintIndexSong = parseInt(hintIndexSong);
   let totalCorrectSong = storage.getItem("totalCorrectSong") || "0";
   totalCorrectSong = parseInt(totalCorrectSong);
+  let correctTodaySong = storage.getItem("correctTodaySong") || "false";
 
   storage.setItem("lastAccess", endDate);
 
@@ -99,6 +103,8 @@
   let inputsSong = [input0Song, input1Song, input2Song, input3Song, input4Song];
 
   function enterGuessMovie() {
+    if (correctTodayMovie === "true") return;
+    
     guessUsedMovie[hintIndexMovie + 1] = false;
     guessUsedMovie[hintIndexMovie] = true;
     storage.setItem("guessUsedMovie", JSON.stringify(guessUsedMovie));
@@ -117,6 +123,8 @@
   }
 
   function enterGuessSong() {
+    if (correctTodaySong === "true") return;
+    
     guessUsedSong[hintIndexSong + 1] = false;
     guessUsedSong[hintIndexSong] = true;
     storage.setItem("guessUsedSong", JSON.stringify(guessUsedSong));
@@ -152,6 +160,8 @@
     storage.setItem("totalCorrectMovie", JSON.stringify(totalCorrectMovie));
     statsWindowShow = true;
     infoWindowShow = false;
+    storage.setItem("correctTodayMovie", "true");
+    correctTodayMovie = "true";
   }
 
   function gameWonSong() {
@@ -162,6 +172,8 @@
     storage.setItem("totalCorrectSong", JSON.stringify(totalCorrectSong));
     statsWindowShow = true;
     infoWindowShow = false;
+    storage.setItem("correctTodaySong", "true");
+    correctTodaySong = "true";
   }
 
   function showStats() {
