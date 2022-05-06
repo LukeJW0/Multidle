@@ -301,6 +301,9 @@
     ],
     [
       "https://i0.wp.com/www.usmagazine.com/wp-content/uploads/2018/01/116937344_heath-ledger-zoom.jpg?crop=0px%2C41px%2C2000px%2C1131px&resize=1600%2C900&ssl=1&quality=86&strip=all", yearImage, quoteImage, "https://alchetron.com/cdn/gil-junger-40e802c3-0d39-49c9-bdf1-f9e858e8e9f-resize-750.jpeg", "https://static01.nyt.com/images/2019/03/31/arts/31tenthings-history1/merlin_152396589_c07cbedc-4de1-48b2-88aa-93bfab25a539-superJumbo.jpg"
+    ],
+    [
+      "https://m.media-amazon.com/images/M/MV5BNmNlNGU0ZDgtMDg3MS00ZGZmLTg4ZjMtYjMyZjVmNzlhNWIwXkEyXkFqcGdeQXVyMTE1MTYxNDAw._V1_.jpg", yearImage, quoteImage, "http://thecinemaarchives.com/wp-content/uploads/2020/06/The-Wachowskis-directing-alkdjflkafj.jpg", "https://i0.wp.com/robscene.com/wp-content/uploads/2022/04/The-Matrix.jpg?fit=1245%2C700&ssl=1"
     ]
   ];
   const hintsMovie = [
@@ -318,9 +321,12 @@
     ],
     [
       "This movie stars Heath Ledger", "This movie came out in 1999", "This movie has the line: \"I know you can be overwhelmed, and you can be underwhelmed, but can you ever just be whelmed?\"", "This movie was directed by Gil Junger", "This scene is in the movie"
+    ],
+    [
+      "This movie stars Keanu Reeves", "This movie came out in 1999", "This movie has the line: \"There is no spoon.\"", "This movie was directed by the Wachowskis", "This scene is in the movie"
     ]
   ];
-  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY", "10 THINGS I HATE ABOUT YOU"];
+  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY", "10 THINGS I HATE ABOUT YOU", "THE MATRIX"];
 
   const imagesSong = [
     [
@@ -337,6 +343,9 @@
     ],
     [
       "https://media.npr.org/assets/img/2020/11/13/outkastb-wflag_wide-265a1c04bb72a827735695a8503f585f246ffe14.jpg", yearImage, "https://images.squarespace-cdn.com/content/v1/56858337cbced60d3b293aef/1604007072483-1YVNX2K2E3YEN3RHUYKA/Albumism_OutKast_Stankonia_MainImage_16x9.jpg", billboardImage, quoteImage
+    ],
+    [
+      "https://ichef.bbci.co.uk/news/976/cpsprodpb/165E5/production/_122712619_gettyimages-1205196725.jpg", yearImage, "https://images.vice.com/noisey/content-images/article/kanye-west-late-registration-10-year-anniversary-essay/late-registration-cover.jpg?crop=1xw:0.5625xh;center,center&resize=1200:*", billboardImage, quoteImage
     ]
   ];
   const hintsSong = [
@@ -354,9 +363,12 @@
     ],
     [
       "This song is by OutKast", "This song came out in 2000", "This song is in the album \"Stankonia\"", "This song reached No. 1 on the Billboard Hot 100", "This song has the lyric \"Never meant to make your daughter cry\""
+    ],
+    [
+      "This song is by Kanye West", "This song came out in 2005", "This song is in the album \"Late Registration\"", "This song reached No. 42 on the US Billboard Hot 100", "This song has the lyric \"Come up in the spot looking extra fly\""
     ]
   ];
-  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY", "MS JACKSON"];
+  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY", "MS JACKSON", "TOUCH THE SKY"];
   
 </script>
 
