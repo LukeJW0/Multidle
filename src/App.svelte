@@ -201,6 +201,8 @@
     infoWindowShow = false;
   }
 
+//
+  
   let selected = '';
 
   function changeGame() {
