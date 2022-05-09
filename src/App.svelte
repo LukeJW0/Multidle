@@ -6,7 +6,7 @@
   let isMovie = true;
   let isSong = false;
 
-  const startDate = new Date(2022, 4, 1).toLocaleString();
+  const startDate = new Date(2022, 4, 5).toLocaleString();
   const endDate = new Date().toLocaleString();
 
   const diffInMs = new Date(endDate) - new Date(startDate);
@@ -304,6 +304,9 @@
     ],
     [
       "https://m.media-amazon.com/images/M/MV5BNmNlNGU0ZDgtMDg3MS00ZGZmLTg4ZjMtYjMyZjVmNzlhNWIwXkEyXkFqcGdeQXVyMTE1MTYxNDAw._V1_.jpg", yearImage, quoteImage, "http://thecinemaarchives.com/wp-content/uploads/2020/06/The-Wachowskis-directing-alkdjflkafj.jpg", "https://i0.wp.com/robscene.com/wp-content/uploads/2022/04/The-Matrix.jpg?fit=1245%2C700&ssl=1"
+    ],
+    [
+      "https://cdn.substack.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1d7d598b-0ee6-4131-9b14-b9068e9d8474_1200x720.jpeg", yearImage, quoteImage, "https://www.hollywoodinsider.com/wp-content/uploads/2022/01/The-Hollywood-Insider-Shawn-Levy-Journey-1280x720.jpg", "https://see.news/wp-content/uploads/2022/01/https-_hypebeast.com_image_2022_01_disney-plus-real-steel-tv-series-adaptation-plans-tw.jpg"
     ]
   ];
   const hintsMovie = [
@@ -324,9 +327,12 @@
     ],
     [
       "This movie stars Keanu Reeves", "This movie came out in 1999", "This movie has the line: \"There is no spoon.\"", "This movie was directed by the Wachowskis", "This scene is in the movie"
+    ],
+    [
+      "This movie stars Hugh Jackman", "This movie came out in 2011", "This movie has the line: \"The People's Champion? Sounds pretty good to me.\"", "This movie was directed by Shawn Levy", "This scene is in the movie"
     ]
   ];
-  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY", "10 THINGS I HATE ABOUT YOU", "THE MATRIX"];
+  const answersMovie = ["INCEPTION", "THE DARK KNIGHT", "SUPERBAD", "DODGEBALL: A TRUE UNDERDOG STORY", "10 THINGS I HATE ABOUT YOU", "THE MATRIX", "REAL STEEL"];
 
   const imagesSong = [
     [
@@ -346,6 +352,9 @@
     ],
     [
       "https://ichef.bbci.co.uk/news/976/cpsprodpb/165E5/production/_122712619_gettyimages-1205196725.jpg", yearImage, "https://images.vice.com/noisey/content-images/article/kanye-west-late-registration-10-year-anniversary-essay/late-registration-cover.jpg?crop=1xw:0.5625xh;center,center&resize=1200:*", billboardImage, quoteImage
+    ],
+    [
+      "https://www.billboard.com/wp-content/uploads/2021/01/video-9506651-image.jpg", yearImage, "https://townsquare.media/site/812/files/2022/04/attachment-playboi-carti-xxl-magazine-spring-2022-cover-1.jpg?w=980&q=75", billboardImage, quoteImage
     ]
   ];
   const hintsSong = [
@@ -366,9 +375,12 @@
     ],
     [
       "This song is by Kanye West", "This song came out in 2005", "This song is in the album \"Late Registration\"", "This song reached No. 42 on the US Billboard Hot 100", "This song has the lyric \"Come up in the spot looking extra fly\""
+    ],
+    [
+      "This song is by Playboi Carti", "This song came out in 2017", "This song is in the album \"Playboi Carti\"", "This song reached No. 29 on the US Billboard Hot 100", "This song has the lyric \"In New York I Milly Rock\""
     ]
   ];
-  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY", "MS JACKSON", "TOUCH THE SKY"];
+  const answersSong = ["GODS PLAN", "NO ROLE MODELZ", "OLD TOWN ROAD", "AMERICAN BOY", "MS JACKSON", "TOUCH THE SKY", "MAGNOLIA"];
   
 </script>
 
